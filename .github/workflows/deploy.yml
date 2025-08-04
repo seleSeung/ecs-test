@@ -11,7 +11,7 @@ env:
   ECS_SERVICE: selee-task-service
   ECS_CLUSTER: next-team-first-cluster
   ECS_TASK_DEFINITION_FAMILY: selee-task
-  CONTAINER_NAME: spring-api-container
+  CONTAINER_NAME: selee-ecr
 
 permissions:
   contents: read
