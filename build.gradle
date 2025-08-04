@@ -31,7 +31,7 @@ test {
 }
 
 springBoot {
-    mainClass = 'com.next.app.NextJavaServerBaseApplication'
+    mainClass.set('com.next.app.NextJavaServerBaseApplication')
 }
 
 bootJar {
