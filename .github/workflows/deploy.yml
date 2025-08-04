@@ -56,10 +56,14 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      - name: 기존 태스크 정의 다운로드
+      - name: jq 설치
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: 기존 태스크 정의 다운로드 및 수정
         id: download-task-def
         run: |
-          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION_FAMILY }} > task-definition.json
+          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION_FAMILY }} > full-task-def.json
+          jq '.taskDefinition' full-task-def.json > task-definition.json
 
       - name: 새로운 이미지로 태스크 정의 업데이트
         id: task-def
