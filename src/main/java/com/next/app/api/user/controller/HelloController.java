@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("/hello")
-    @Operation(summary = "Hello selee 인사", description = "간단한 인사말을 반환합니다.")
+    @Operation(summary = "Hello selee 인사", description = "안녕하세요 간단한 인사말을 반환합니다.")
     public String hello() {
         return "Hello, Spring Boot with Swagger!";
     }
